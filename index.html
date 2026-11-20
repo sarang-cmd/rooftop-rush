@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#a9ddeb" />
+    <meta name="description" content="A bright, fast rooftop parkour run above New York City." />
+    <title>Rooftop Rush — NYC Parkour</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="gameCanvas" aria-label="Rooftop Rush 3D game"></canvas>
+      <div class="screen-shade" aria-hidden="true"></div>
+
+      <div class="hud">
+        <header class="topbar">
+          <div class="brand" aria-label="Rooftop Rush, New York City">
+            <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div>
+              <div class="brand-name">ROOFTOP<span>RUSH</span></div>
+              <div class="brand-subtitle">NEW YORK CITY <i></i> SKYWAY 01</div>
+            </div>
+          </div>
+
+          <div class="checkpoint-panel" aria-live="polite">
+            <div class="panel-kicker"><span class="kicker-diamond"></span> ROUTE PROGRESS</div>
+            <div class="checkpoint-main"><strong id="checkpointCount">00 <small>/ 07</small></strong><span>CHECKPOINTS</span></div>
+            <div id="routeTicks" class="route-ticks" aria-hidden="true"></div>
+          </div>
+
+          <div class="top-actions">
+            <div id="timerPanel" class="timer-panel" aria-live="off">
+              <svg class="timer-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="2.2"/><path d="M12 9v4l2.6 1.7M9.5 2h5M12 2v2M18.5 5.5l1.4-1.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div class="timer-copy"><span>TIME LEFT</span><strong id="timer">00:40</strong></div>
+              <div class="timer-track"><div id="timerFill" class="timer-fill"></div></div>
+            </div>
+            <button id="resetButton" class="reset-button" type="button" title="Reset run (R)" aria-label="Reset run">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a8 8 0 1 1-2.3-5.6M20 4v5.5h-5.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+        <div id="result" class="result-banner" role="status" aria-live="polite" hidden>
+          <div id="resultEyebrow" class="result-eyebrow">ROUTE COMPLETE</div>
+          <strong id="resultTitle">YOU OWN THE SKY.</strong>
+          <p id="resultDescription">The billboard is yours.</p>
+          <button id="runAgain" type="button">RUN IT AGAIN <span aria-hidden="true">↗</span></button>
+        </div>
+
+        <div class="bottombar">
+          <div class="location-card">
+            <span class="live-pulse" aria-hidden="true"></span>
+            <div><strong>AUTO-RUN ON</strong><span>MIDTOWN, MANHATTAN</span></div>
+          </div>
+          <div class="controls-card" aria-label="Controls: Space or tap to jump; A and D or arrow keys to steer; R to reset">
+            <div class="control-group"><kbd>SPACE</kbd><span>JUMP</span></div>
+            <span class="control-separator"></span>
+            <div class="control-group"><span class="key-pair"><kbd>A</kbd><kbd>D</kbd></span><span>STEER</span></div>
+            <span class="control-separator"></span>
+            <div class="control-group"><kbd>R</kbd><span>RESET</span></div>
+          </div>
+          <button id="jumpButton" class="jump-button" type="button" aria-label="Jump">
+            <span class="jump-arrow" aria-hidden="true">↗</span><span>JUMP</span>
+          </button>
+        </div>
+        <div class="mobile-steer" aria-label="Steering controls">
+          <button id="steerLeft" type="button" aria-label="Steer left">←</button>
+          <button id="steerRight" type="button" aria-label="Steer right">→</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
